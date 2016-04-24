@@ -1,6 +1,6 @@
 import THREE from 'three';
 
-const HEX_COUNT = 40;
+const HEX_COUNT = 70;
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 
@@ -16,8 +16,8 @@ animate();
 
 function init() {
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 0.1, 1000);
-  camera.position.set(0, 0, 960);
+  camera = new THREE.PerspectiveCamera(100, WIDTH / HEIGHT, 0.1, 1000);
+  camera.position.set(200, -200, 950);
   scene.add(camera);
 
   camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -27,7 +27,7 @@ function init() {
   light.position.set(-200, 100, 1000);
   camera.add(light);
 
-  scene.fog = new THREE.FogExp2(0x000000, 0.004);
+  scene.fog = new THREE.FogExp2(0x000000, 0.0025);
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
   renderer.setSize(WIDTH, HEIGHT);
@@ -35,10 +35,10 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   for(let i = 0; i < HEX_COUNT; i++){
-    let posX = randomize(-500, 500);
-    let posY = randomize(-500, 500);
+    let posX = randomize(-1000, 1000);
+    let posY = randomize(-1000, 1000);
     let depth = 1000 / HEX_COUNT;
-    let mesh = hex(posX, posY, randomize(0, 200), randomize(0, 10));
+    let mesh = hex(posX, posY, randomize(0, 200), randomize(0, 15));
     mesh.position.z = depth * i;
     scene.add(mesh);
     hexes.push(mesh);
@@ -120,10 +120,13 @@ function animate(now) {
   for(let i = 0; i < hexes.length; i++) {
     let hex = hexes[i];
 
+    hex.material.emissiveIntensity = (Math.floor(randomize(0, 1000)) ? 0.3 : 10);
+    hex.material.color = new THREE.Color(randomize(0, 1), randomize(0, 1), randomize(0, 1));
+
     if(hex.position.z > 1000) {
       hex.position.z = 1;
-      hex.position.x = randomize(-300, 300);
-      hex.position.y = randomize(-300, 300);
+      hex.position.x = randomize(-1000, 1000);
+      hex.position.y = randomize(-1000, 1000);
     } else {
       hex.position.z += 1;
       hex.rotation.z += 0.0001;

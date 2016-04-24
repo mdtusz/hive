@@ -1,20 +1,20 @@
 {
-  "name": "quito",
+  "name": "hive",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline"
+    "dev": "node webpack.config.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Miklós Tusz",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.6.0",
+    "ecstatic": "^1.4.0",
     "html-webpack-plugin": "^2.16.0",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.13.0"
   },
   "babel": {
     "presets": [
