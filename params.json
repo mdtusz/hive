@@ -1,0 +1,6 @@
+{
+  "name": "Hive",
+  "tagline": "Experiments for The Hive.",
+  "body": "### Graphics and audio experiments inspired by, and for The Hive.\r\n\r\n* hexfield - a Microsoft screensaver style visual of wireframe hexagons using Three.js\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
